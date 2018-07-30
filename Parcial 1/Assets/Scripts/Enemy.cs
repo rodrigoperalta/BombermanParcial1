@@ -72,16 +72,13 @@ public class Enemy : MonoBehaviour
                 }
                 break;
             case EnemyState.GoAway:
-                Vector3 dir02;
+                Vector3 dir02 = Vector3.zero;
                 if (targetEnemy != null)
                     dir02 = transform.position - targetEnemy.position;
                 else if (targetEnemy1 != null)
                     dir02 = transform.position - targetEnemy1.position;
-
-                else
+                else if (targetEnemy2 != null)
                     dir02 = transform.position - targetEnemy2.position;
-
-
                 transform.Translate(dir02.normalized * speed * Time.deltaTime);
                 if (targetEnemy != null)
                     if (Vector3.Distance(transform.position, targetEnemy.position) > distanceToRestart)
